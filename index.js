@@ -153,8 +153,6 @@ const galleryControlsContainer = document.querySelector('.gallery-controls');
 const galleryControls = ['previous', 'next']; // removed 'add'
 const galleryItems = document.querySelectorAll('.gallery-item');
 
-// original author used this to create another gallery for thumbnails. 
-// I've removed thumbnails, so could remove the constructor
 class Carousel {
   constructor(container, items, controls) {
     this.carouselContainer = container;
@@ -172,8 +170,8 @@ class Carousel {
       el.classList.remove('gallery-item-5');
     });
 
-    // don't need slice for only 5 items - originally if new items added. Delete
-    this.carouselArray.slice(0, 5).forEach((el, i) => {
+    // for each of the 5 items in the gallery, add class with new, appropriate index
+    this.carouselArray.forEach((el, i) => {
       el.classList.add(`gallery-item-${i+1}`);
     });
   }
@@ -189,16 +187,6 @@ class Carousel {
     
     this.updateGallery();
   }
-
-  // Construct the carousel navigation
-  // setNav() {
-  //   galleryContainer.appendChild(document.createElement('ul')).className = 'gallery-nav';
-
-  //   this.carouselArray.forEach(item => {
-  //     const nav = galleryContainer.lastElementChild;
-  //     nav.appendChild(document.createElement('li'));
-  //   }); 
-  // }
 
   // Construct the carousel controls
   setControls() {
@@ -235,22 +223,4 @@ const phoneCarousel = new Carousel(galleryContainer, galleryItems, galleryContro
 phoneCarousel.setControls();
 // exampleCarousel.setNav();
 phoneCarousel.useControls();
-
-
-// Control YouTube embed
-// To use API, iFrame player API code must load asynchronously
-// var tag = document.createElement('script');
-// tag.src = "https://www.youtube.com/iframe_api";
-// var firstScriptTag = document.getElementsByTagName('script')[0];
-// firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-// function onYouTubeIframeAPIReady() {
-//   player = new YT.Player('youtube', {
-//     videoId: '9sZQ0m5oKLc',
-//     events: {
-//       'onReady': onPlayerReady,
-//       'onStateChange': onPlayerStateChange
-//     }
-//   });
-// }
 
