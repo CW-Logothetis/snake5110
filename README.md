@@ -46,7 +46,10 @@ https://snake-nokia.netlify.app/
 
 ## BUGS <a name="bugs"></a>
 
+- Putting the Snake game inside was easy. But the blue start button won't stay still when screen changes size. Need to re-look at what's going on with the percentages; they should all scale...
 - when the user changes phone cover the snake game fades in/out. But the blue play button does not.
+- if you change phone covers quickly, the snake game doesn't disappear fast enough.
+- Text-shadows aren't great and there's an opacity/alpha issue with the five phones.
 
 
 ## TO DO <a name="todo"></a>
