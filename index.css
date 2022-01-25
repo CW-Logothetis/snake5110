@@ -1,0 +1,689 @@
+* {
+  box-sizing: border-box;
+}
+
+html{ 
+  margin: 0 auto;
+  font-family: 'Roboto Mono', monospace;
+  color:rgb(65, 97, 65, 0.904);
+  font-size: 0.625rem;
+}
+
+body {
+    margin: 0;
+    text-align: center;
+    font-size: 1rem;
+
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - TYPOGRAPHY - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - */
+
+h1 {
+  grid-column: 5 / 9;
+  grid-row: 1;
+
+  margin: 0.5em 0 0.25em 0;
+
+  font-size: 2rem;
+}
+
+h2 .about--title {
+  text-align: left;
+  grid-column: 3/5;
+  grid-row: 1;
+  font-size: 1.8rem;
+}
+
+.p-title{
+  grid-column: 2 / -2;
+  grid-row: 2;
+
+  margin: 0 0 0.75em 0;
+
+  font-size: 1.2rem;
+}
+
+/*Typography media queries*/
+
+@media (min-width: 750px) {
+  h1 {
+    margin: 0.5em 0 0.25em 0;
+    font-size: 4rem;
+  }
+
+  .p-title{
+    margin: 0 0 0.25em 0;
+    padding-bottom: 1em;
+    font-size: 1.4rem;
+  }
+
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - MAIN - GRID - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - */
+
+.main-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - SNAKE - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - */
+
+
+.grid {
+  box-sizing: content-box;
+
+  top: 18.575em;
+  /* margin: 0 auto; */
+  display: flex;
+  flex-wrap: wrap;
+  width: 60px;
+  height: 60px;
+  border: solid 2px rgba(65, 97, 65, 0.504);
+
+  /* keep on top of current phone in gallery */
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 100;
+  
+  opacity: 1; /* for fade in/out on button click */
+}
+
+.gridFadeInOut {
+  animation: fadeInOut 0.5s linear forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 1; }
+  1% { opacity: 0; }
+  /* 50% { opacity: 0.1; } */
+  50% { opacity: 0.5; }
+  100% { opacity: 1; } 
+ }
+
+.square {
+    width: 6px;
+    height: 6px;
+}
+
+.snake {
+    background-color: rgb(65, 97, 65, 0.704);
+}
+
+.apple {
+  background-color: rgb(65, 97, 65, 0.704)
+}
+
+/* Snake game media queries*/
+
+@media (min-width: 900px) {
+  .grid {
+    top: 18em; 
+    left: 0.3em;
+  }
+}
+
+
+/* - - - -  - - 
+- - GALLERY - -
+- - - - - - - */
+
+/* Gallery is from https://github.com/benkimo6i/vanilla-js-carousel/blob/master/index.html
+   I've adapted it here, i.e. re-styled it and moved below the snake game */
+
+.gallery {
+  position: relative;
+}
+
+.gallery-container {
+  grid-column: 1/-1;
+  grid-row: 4;
+
+  margin-top: 1em; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width:900px) {
+  .gallery-container {
+    margin: 4em 0;
+  }
+}
+
+
+/*-------------------------------*/
+/* CENTRE COLUMN (col-2) - Nokia */
+/*-------------------------------*/
+
+.col-2 {
+
+  grid-column: 2 / -2;
+  grid-row: 3;
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: -6em;  
+  max-width: 2000px;
+  height: 50em;
+  min-height: auto;
+  position: relative;
+}
+
+.gallery-item {
+  /* height: 150px; */
+  opacity: 0;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  width: 5em;
+  z-index: 0;
+}
+
+.gallery-item-1 {
+  left: 25%;
+  opacity: .4;
+  transform: translateX(-50%);
+}
+
+.gallery-item-2,
+.gallery-item-4 {
+  /* height: 200px; */
+  opacity: 1;
+  width: 8em;
+  z-index: 1;
+}
+
+.gallery-item-2 {
+  left: 35%;
+  transform: translateX(-50%);
+}
+
+.gallery-item-3 {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.45), 0 0 110px rgba(255, 255, 255, 0.25), 0 0 100px rgba(255, 255, 255, 0.1);
+  opacity: 1;
+  left: 50.5%;
+  transform: translateX(-50%);
+  width: 13.2em;
+  z-index: 2;
+}
+
+  @media (min-width: 900px) {
+    .gallery-item {
+      width: 6em;
+    }
+    .gallery-item-3 {
+      width: 16em;
+    }
+    .gallery-item-2,
+    .gallery-item-4 {
+      width: 10em;
+    }
+  }
+
+.gallery-item-4 {
+  left: 65%;
+  transform: translateX(-50%);
+}
+
+.gallery-item-5 {
+  left: 75%;
+  opacity: .4;
+  transform: translateX(-50%);
+}
+
+.gallery-controls {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  height: 30px;
+  width: 100%;
+  /* margin-top: 100px; */
+  z-index: 1000;
+
+  border:rgba(26, 156, 216, 1)
+}
+
+.gallery-controls button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 20px;
+  padding: 0 12px;
+  text-transform: capitalize; /* not needed without text for previous and next */
+}
+
+.gallery-controls button:focus {
+  outline: none;
+}
+
+.gallery-controls-previous {
+  position: relative;
+}
+
+/* Future plan - add circle around arrow. Or just add an image? */
+/* .gallery-controls-circle-border {
+  height: 25px;
+  width: 25px;
+  background-color: rgb(221, 27, 27);
+  border-radius: 50%;
+  display: inline-block; 
+} */
+
+.gallery-controls-previous::before {
+  
+  border: solid rgb(65, 97, 65, 0.704);
+  border-width: 0 3px 3px 0;
+  content: '';
+  display: inline-block;
+  height: 15px;
+  left: -10px;
+  padding: 2px;
+  position: absolute;
+  top: 0;
+  transform: rotate(135deg) translateY(-50%);
+  transition: left 0.15s ease-in-out;
+  width: 15px;
+}
+
+.gallery-controls-previous:hover::before {
+  border: solid rgb(65, 97, 65, 0.904);
+  border-width: 0 4px 4px 0;
+  left: -18px;
+}
+
+.gallery-controls-next {
+  position: relative;
+}
+
+.gallery-controls-next::before {
+  border: solid rgb(65, 97, 65, 0.704);
+  border-width: 0 3px 3px 0;
+  content: '';
+  display: inline-block;
+  height: 15px;
+  padding: 2px;
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: rotate(-45deg) translateY(-50%);
+  transition: right 0.15s ease-in-out;
+  width: 15px;
+}
+
+.gallery-controls-next:hover::before {
+  border: solid rgb(65, 97, 65, 0.904);
+  border-width: 0 4px 4px 0;
+  right: -18px;
+}
+
+  @media (min-width: 750px) {
+    .col-2 {
+      width: 50%;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .col-2 {
+      width: 30%;
+    }
+  }
+
+/* -----------------------
+        START BUTTON
+-------------------------*/
+
+#start {
+  position: absolute; 
+  z-index: 10000;
+  left: 50.1%;
+  transform: translateX(-50%);
+  margin-top: 11em;
+  height: 10px;
+  width: 6%;
+  background:rgba(26, 156, 216, 1);
+  color:rgba(26, 156, 216, 1);
+  border: none;
+  border-radius: 7px;
+  text-align: center;
+  font-size: 0.5em;
+  padding-left: 10.5px;
+  cursor: pointer;
+
+  /* fade in/out */
+  opacity: 1;
+  }
+
+  .startFadeInOut {
+    animation: fadeInOut 0.5s linear forwards;
+  }
+  
+    @keyframes fadeInOut {
+      0% { opacity: 1; }
+      10% { opacity: 0; } 
+      100% { opacity: 1; } 
+    }
+
+  #start:hover {
+    background-color: green;
+    border: cyan;
+  }
+  
+  #start:focus {
+    background-color: yellow;
+    outline: cyan;                  
+  }
+  
+  #start:active {
+    background-color: darkorange;
+  }
+
+  @media (min-width: 450px) {
+    #start {
+      left: 50.3%;
+      margin-top: 11.7em;
+      height: 10px;
+      width: 5%;
+      font-size: 0.5em;
+      padding-left: 10.5px;
+      }
+  }
+
+  @media (min-width: 500px) {
+    #start {
+      left: 50.3%;
+      margin-top: 11.5em;
+      height: 10px;
+      width: 3.75%;
+      font-size: 0.5em;
+      padding-left: 10.5px;
+      }
+  }
+
+  /* @media (min-width: 700px) {
+    #start {
+      left: 50.3%;
+      margin-top: 11.5em;
+      height: 10px;
+      width: 3.5%;
+      font-size: 0.5em;
+      padding-left: 10.5px;
+      }
+  } */
+
+  @media (min-width: 900px) {
+    #start {
+      left: 50.3%;
+      margin-top: 12em;
+      height: 10px;
+      width: 6%;
+      font-size: 0.5em;
+      padding-left: 10.5px;
+      }
+  }
+
+  @media (min-width: 1200px) {
+    #start {
+      left: 50.2%;
+      margin-top: 12em;
+      height: 10px;
+      width: 7%;
+      font-size: 0.5em;
+      padding-left: 10.5px;
+      }
+  }
+
+  @media (min-width: 1400px) {
+    #start {
+      left: 50.2%;
+      margin-top: 12em;
+      height: 10px;
+      width: 5%;
+      font-size: 0.5em;
+      padding-left: 10.5px;
+      }
+  }
+
+  @media (min-width: 1800px) {
+    #start {
+      left: 50.2%;
+      margin-top: 12em;
+      height: 10px;
+      width: 5%;
+      font-size: 0.5em;
+      padding-left: 10.5px;
+      }
+  }
+
+/*-----------------------------------*/
+/* Scoreboard */
+/*-----------------------------------*/
+
+
+.scoreboard-text {
+  grid-column: 4 / 7;
+  grid-row: 3;
+
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0 0 0.25em 0;
+  padding: 0.5em 0 0.6em 0;
+
+  border-top: solid 1px darkolivegreen;
+  border-bottom: solid 1px darkolivegreen;
+  border-left: solid 1px darkolivegreen;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+#score {
+  grid-column: 7 / 10;
+  grid-row: 3;
+
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0 0 0.25em 0;
+  padding: 0.5em 0 0.6em 0;
+
+  border-top: solid 1px darkolivegreen;
+  border-bottom: solid 1px darkolivegreen;
+  border-right: solid 1px darkolivegreen;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.instructions {
+  grid-column: 2 / -2;
+  grid-row: 5;
+  margin-top: -3.5em;
+  margin-bottom: 2em;
+}
+
+
+.child-score {
+
+  margin: 1em 0;
+
+}
+
+  @media (min-width: 750px) {
+
+    .scoreboard-text {
+      grid-column: 5 / 7;
+      margin: 1.5em 0 2.5em 0;
+    }
+
+    #score {
+      grid-column: 7/9;
+      margin: 1.5em 0 2.5em 0;
+    }
+
+    .instructions p {
+    
+      margin-top: 1em;
+      margin-bottom: 2em;
+
+      font-size: 1.6rem;
+    }
+
+  }
+
+  @media (min-width: 900px) {
+    .scoreboard-text {
+      grid-column: 6 / 7;
+      margin: 1.5em 0 2.5em 0;
+      font-size: 1.8rem;
+    }
+
+    #score {
+      grid-column: 7;
+      margin: 1.5em 0 2.5em 0;
+      font-size: 1.8rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .instructions p {
+    
+      margin-top: 2em;
+      margin-bottom: 3em;
+
+      font-size: 1.6rem;
+    }
+  }
+
+
+/*-----------------------------------*/
+/* ABOUT section ------------------- */
+/*-----------------------------------*/
+
+.about {
+  grid-column: 1 / -1;
+  background-color: rgba(110, 182, 136, 0.5);
+  padding: 10px 0 50px 0;
+}
+
+.about--grid {
+  align-items: center;
+}
+
+.about--title {
+  grid-column: 3 / -3;
+  grid-row: 1;
+  font-size: 4rem;
+}
+
+.about--para {
+  grid-column: 2 / -2;
+  grid-row: 2;
+  margin-bottom: 2em;
+  text-align: left;
+}
+
+.about-text {
+  text-align: justify;
+  padding-bottom: 1em;
+}
+
+@media (min-width: 750px) {
+  .about--para {
+    margin-bottom: 4em;
+  }
+  
+  .about-text {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .about--para {
+    grid-column: 3 / -3;
+  }
+}
+
+@media (min-width: 1400px) {
+  .about--para {
+    grid-column: 4 / -4;
+  }
+}
+
+/*-------------------------------------------*/
+/*         YouTube video embed */
+/*-------------------------------------------*/
+
+.col-iframe {
+  grid-column: 2 / -2;
+  grid-row: 3;
+}
+
+/* .col-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  margin-left: 2em;
+  margin-right: 1em;
+} */
+
+.responsive-iframe {
+max-width: 100%;
+margin-bottom: 10px;
+border-radius: 15px;
+box-shadow: 6px 10px 23px 0px rgba(90, 89, 89, 0.38)
+}
+
+  @media screen and (max-width: 576px) {
+    .col-1 {
+      flex-direction: column-reverse;
+      width: 80%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+ @media screen and (max-height: 910px) {
+  .col-1 {
+    width: 25%;
+    height: 390px; 
+    margin-left: 0;
+    margin-right: 0;
+  }
+ }
+
+  /*-----------------------------------*/
+  /* NAV - five dots - future plan for nav of 5 phone images to replace main gallery when on small screen */
+  /*-----------------------------------*/
+
+  /* .gallery-nav {
+    bottom: -15px;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  .gallery-nav li {
+    background: #ccc;
+    border-radius: 50%;
+    height: 10px;
+    margin: 0 16px;
+    width: 10px;
+  }
+
+  .gallery-nav li.gallery-item-selected {
+    background: #555;
+  } */

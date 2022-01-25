@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+      <title>Snake on the 5110</title>
+      
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="index.css">
+  </head>
+  
+  <body>  
+
+<!-- Gallery is from https://github.com/benkimo6i/vanilla-js-carousel/blob/master/index.html
+     I've adapted it here, i.e. re-styled it and moved on top of the snake game -->
+
+    <div class="gallery main-grid">
+     
+      <h1>Snake I</h1>
+      <p class="p-title">back on the Nokia 5110</p>
+
+
+      <div class="gallery-container">
+            <div class="col-2">
+              <div class="grid"></div>
+              <!-- <button id="start">▶</button> -->
+              <div class="gallery-controls"></div>
+
+              <img class="gallery-item gallery-item-1" src="images/Nokia-blue-opacity1.png" data-index="1">
+              <img class="gallery-item gallery-item-2" src="images/Nokia-yellow-opacity1.png" data-index="2">
+              <img class="gallery-item gallery-item-3" src="images/Nokia-green-opacity2.png" data-index="3">
+              <img class="gallery-item gallery-item-4" src="images/Nokia-orange-opacity1.png" data-index="4">
+              <img class="gallery-item gallery-item-5" src="images/Nokia-purple-opacity1.png" data-index="5">
+              <button id="start"></button>
+            </div>
+      </div>
+
+      
+      <p class="scoreboard-text">Score:</p>
+      <p id="score"></p>
+      
+
+      <!-- <div class="temp-score-flex"> -->
+      <!-- <div class="col-score">
+        <div class="parent-screen-img">
+          <img src="images/Nokia-screen.png" id="scoreboard" alt="">
+          <div id="mobile-score-bg"></div>
+          <div class="child-score">
+            <p id="p-score-text">Score:<span id="score"></span></p>
+          </div>  
+        </div>
+      </div> -->
+    
+      <div class="instructions">
+            <p>Home key to start/reset</br>
+            Arrow keys to move</br>
+            Left/right to change cover</p>
+      </div>
+      <!-- </div> -->
+
+      
+
+    </div>
+
+    <section class="about">
+
+      <div class="main-grid about--grid">
+        <h2 class="about--title">About</h2> 
+        <div class="about--para">
+          <p class="about-text">Learning to code the snake game took me back to 1998, when Nokia released a phone that not only had Snake 1 on it, but you could change the outer cover.</p>
+          <p class="about-text">They had a classy TV add too, with a couple swapping their covers on some sun-baked Continental washing line, 
+            whilst Tarrega's 'Gran Vals' - the inspiration for the Nokia start-up jingle - played in the background (at 0:15 in the video below).</p>
+          <p class="about-text">I'd just learnt to play the waltz and thought this'd be a good way to convince my parents to buy the 5110 as my first mobile.</p>
+          <p class="about-text">This being 1998, and most teenagers not having mobiles, they refused.</p>
+          <p class="about-text">So once I'd coded the game, I decided to put all the pieces back together again and finally have some 'closure' from my teenage trauma.</p> 
+          <p class="about-text"> (CS pun intended)</p>
+        </div>
+
+          <!--  Setting the enablejsapi parameter’s value to 1 enables the iFrame API to control the player-->
+        <div class="col-iframe">
+
+              <!-- <div id="player"></div> -->
+            <iframe class = "responsive-iframe" id="youtube"
+                  width="560" height="315"
+                  
+                  src="https://www.youtube.com/embed/9sZQ0m5oKLc?start=05" 
+                  title="YouTube video player" frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </iframe>
+
+            <p>Tarrega's 'Gran Vals';</br>
+              inspiration for the Nokia theme</br>
+              Click play to start</p>
+          </div>
+
+      </div>
+
+  </section>
+
+   
+
+      <script src="index.js"></script>
+  </body>
+</html>
