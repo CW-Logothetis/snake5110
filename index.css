@@ -273,15 +273,6 @@ h2 .about--title {
   position: relative;
 }
 
-/* Future plan - add circle around arrow. Or just add an image? */
-/* .gallery-controls-circle-border {
-  height: 25px;
-  width: 25px;
-  background-color: rgb(221, 27, 27);
-  border-radius: 50%;
-  display: inline-block; 
-} */
-
 .gallery-controls-previous::before {
   
   border: solid rgb(65, 97, 65, 0.704);
@@ -411,17 +402,6 @@ h2 .about--title {
       padding-left: 10.5px;
       }
   }
-
-  /* @media (min-width: 700px) {
-    #start {
-      left: 50.3%;
-      margin-top: 11.5em;
-      height: 10px;
-      width: 3.5%;
-      font-size: 0.5em;
-      padding-left: 10.5px;
-      }
-  } */
 
   @media (min-width: 900px) {
     #start {
@@ -628,15 +608,6 @@ h2 .about--title {
   grid-row: 3;
 }
 
-/* .col-1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 25%;
-  margin-left: 2em;
-  margin-right: 1em;
-} */
-
 .responsive-iframe {
 max-width: 100%;
 margin-bottom: 10px;
@@ -661,29 +632,3 @@ box-shadow: 6px 10px 23px 0px rgba(90, 89, 89, 0.38)
     margin-right: 0;
   }
  }
-
-  /*-----------------------------------*/
-  /* NAV - five dots - future plan for nav of 5 phone images to replace main gallery when on small screen */
-  /*-----------------------------------*/
-
-  /* .gallery-nav {
-    bottom: -15px;
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-    position: absolute;
-    width: 100%;
-  }
-
-  .gallery-nav li {
-    background: #ccc;
-    border-radius: 50%;
-    height: 10px;
-    margin: 0 16px;
-    width: 10px;
-  }
-
-  .gallery-nav li.gallery-item-selected {
-    background: #555;
-  } */
